@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/calendar.png">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="/converter.css">
+    <link rel="manifest" href="/calendar/manifest.json">
+    <link rel="stylesheet" href="/calendar/converter.css">
     <title>CALENDAR</title>
-    <script src="/converter.js"defer></script>
+    <script src="/calendar/converter.js"defer></script>
 
     <style>
         body {
@@ -92,7 +92,7 @@
 
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/calendar//sw.js')
+            navigator.serviceWorker.register('/calendar/sw.js')
                 .then(registration => {
                     console.log('Service Worker registered with scope:', registration.scope);
                 })
