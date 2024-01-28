@@ -1,0 +1,459 @@
+:root {
+    --dark-text: #f8fbff;
+    --light-body: #f3f8fe;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+    --light-hover: #f0f0f0;
+    --light-text: #151426;
+    --light-btn: #9796f0;
+    --blue: #0000ff;
+    --white: #fff;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --font-family: consolas;
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  html,body {
+    place-items: center;
+    font-family: var(--font-family);
+    background-image: url('AIOS Lite Background (2).jpg') ;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+  }
+  .container {
+    width: max-content;
+    height: max-content;
+    position: relative;
+    display: flex;
+    padding: 2% 0px 0px 0px;
+    justify-content: center;
+    top: 10%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+  }
+  .calendar {
+    height: 559px;
+    width: max-content;
+    background-color: transparent;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 25px 45px 0px 45px;
+    margin-left: 890px;
+    margin-top: 190px;
+  }
+  .calendar {
+    box-shadow: var(--shadow);
+  }
+  .calendar-header {
+    background:transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: var(--white);
+    padding: 10px;
+  }
+  .calendar-body {
+    pad: 10px;
+  }
+  .calendar-week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+    cursor: pointer;
+    color:rgb(255, 252, 252);
+  }
+  .calendar-week-days div:hover {
+  color:black;
+  transform: scale(1.2);
+  transition: all .2s ease-in-out;
+  }
+  .calendar-week-days div {
+    display: grid;
+    place-items: center;
+    color: var(--bg-second);
+    height: 50px;
+  }
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: #f0f0f0;
+  }
+  .calendar-days div {
+    width: 37px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+  }
+  .month-picker {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .month-picker:hover {
+    background-color: var(--color-hover);
+  }
+  .month-picker:hover {
+    color: var(--color-txt);
+  }
+  .year-picker {
+    display: flex;
+    align-items: center;
+  }
+  .year-change {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0px 10px;
+    cursor: pointer;
+  }
+  .year-change:hover {
+    background-color: var(--light-btn);
+    transition:all .2s ease-in-out ;
+    transform: scale(1.12);
+  }
+  .year-change:hover pre {
+    color: var(--bg-body);
+  }
+  .calendar-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #year:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.2 ease-in-out;
+  }
+  .calendar-days div span {
+    position: absolute;
+  }
+   .calendar-days div:hover {
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+    background-color: #fbc7d4;
+    border-radius: 20%;
+    color: var(--dark-text);
+  }
+  .calendar-days div.current-date {
+    color: var(--dark-text);
+    background-color: var(--light-btn);
+    border-radius: 20%;
+  }
+  .month-list {
+    position: relative;
+    left: 0;
+    top: -50px;
+    background-color: #ebebeb;
+    color: var(--light-text);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    border-radius: 20px;
+  }
+  .month-list > div {
+    display: grid;
+    place-content: center;
+    margin: 5px 10px;
+    transition: all 0.2s ease-in-out;
+  }
+  .month-list > div > div {
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .month-list > div > div:hover {
+    background-color:var(--light-btn);
+    color: var(--dark-text);
+    transform: scale(0.9);
+    transition: all 0.2s ease-in-out;
+  }
+  .month-list.show {
+    visibility: visible;
+    pointer-events: visible;
+    transition: 0.6s ease-in-out;
+    animation: to-left .71s forwards;
+  }
+  .month-list.hideonce{
+    visibility: hidden;
+  }
+  .month-list.hide {
+    animation: to-right 1s forwards;
+    visibility: none;
+    pointer-events: none;
+  }
+  .date-time-formate {
+    width: max-content;
+    height: max-content;
+    font-family: Dubai Light, Century Gothic;
+    position: relative;
+    display: inline;
+    top: 96px;
+    justify-content: center;
+  }
+  .day-text-formate {
+    font-family: Microsoft JhengHei UI;
+    font-size: 1.4rem;
+    padding-right: 5%;
+    border-right: 3px solid #ececec;
+    position: absolute;
+    left: -9rem;
+    color:#f0f0f0
+    
+  }
+  .date-time-value {
+    display: block;
+    height: max-content;
+    width: max-content;
+    position: relative;
+    left: 40%;
+    top: -18px;
+    text-align: center;
+    color: #f0f0f0;
+  }
+  .time-formate {
+    font-size: 1.5rem;
+  }
+  .time-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+  }
+  .day-text-formate.hidetime {
+    animation: hidetime 1.5s forwards;
+  }
+  .date-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+  }
+  .day-text-formate.showtime{
+    animation: showtime 1s forwards;
+  }
+  .time-formate.showtime {
+    animation: showtime 1s forwards;
+  }
+  .date-formate.showtime {
+    animation: showtime 1s forwards;
+  }
+
+  .panel{
+    max-width: 100%;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-left: 0% !important;
+  }
+
+  @keyframes to-top {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 1;
+    }
+  }
+  @keyframes to-left {
+    0% {
+      transform: translatex(230%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+  }
+  @keyframes to-right {
+    10% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(-150%);
+      opacity: 1;
+    }
+  }
+  @keyframes showtime {
+    0% {
+      transform: translatex(250%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(0%);
+      opacity: 1;
+    }
+  }
+  @keyframes hidetime {
+    0% {
+      transform: translatex(0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(-370%);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width:320px) {
+    .month-list>div{
+  
+      margin: 5px 0px;
+    }
+
+    .calendar{
+      max-width: 100%;
+      width: auto;
+      overflow: visible;
+      padding: 0 0 0 0;
+      right: auto;
+      left: auto;
+    }
+
+    .button{
+      height: 50px;
+      width: 50px;
+      padding: 0 0 0 0 !important;
+    }
+
+    .responsive-image{
+      height: 40px !important;
+      width: 40px !important;
+    }
+
+  }
+  
+  @media (min-width:330px) and (max-width:600px) {
+    .month-list>div{
+  
+      margin: 5px 0px;
+    }
+
+    .calendar{
+      max-width: 100%;
+      width: auto;
+      overflow: visible;
+      padding: 0 0 0 0;
+      right: auto;
+      left: auto;
+    }
+
+    .button{
+      height: 60px;
+      width: 60px;
+      padding: 0 0 0 0 !important;
+    }
+
+    .responsive-image{
+      height: 50px !important;
+      width: 50px !important;
+    }
+
+  }
+
+  @media screen and (min-device-width: 600px) and (max-width:800px) {
+    .month-list>div{
+  
+      margin: 5px 0px;
+    }
+
+    .calendar{
+      max-width: 100%;
+      position: fixed;
+      top: 0;
+      right: 80px;
+    }
+
+    .panel{
+      max-width: 100%;
+      position: fixed;
+      top: 700px;
+      right: 100px;
+      margin-left: 0% !important;
+    }
+
+  }
+
+  @media screen and (min-device-width: 800px) and (max-width:1204px) {
+    .month-list>div{
+  
+      margin: 5px 0px;
+    }
+
+    .calendar{
+      max-width: 100%;
+      position: fixed;
+      top: 0;
+      right: 80px;
+    }
+
+    .panel{
+      max-width: 100%;
+      position: fixed;
+      top: 700px;
+      right: 100px;
+      margin-left: 0% !important;
+    }
+
+  }
+
+  @media screen and (min-device-width: 1204px) and (max-width:1800px) {
+    .month-list>div{
+  
+      margin: 5px 0px;
+    }
+
+    .calendar{
+      max-width: 80%;
+      position: fixed;
+      top: 0;
+      right: 100px;
+    }
+
+    .panel{
+      max-width: 100%;
+      position: fixed;
+      top: 800px;
+      right: 100px;
+      margin-left: 0% !important;
+    }
+
+  }
+
+  @media (min-width:1800px) and (max-width:3000px) {
+    .calendar{
+      max-width: 100%;
+      position: fixed;
+      top: 0;
+      right: 100px;
+    }
+
+    .panel{
+      max-width: 100%;
+      position: fixed;
+      top: 800px;
+      right: 100px;
+    }
+
+  }
+
+  @media screen and (max-width: 800px) {
+    .calendar,
+    .button-container {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+  }

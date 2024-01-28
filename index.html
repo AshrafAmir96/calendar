@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="calendar.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="converter.css">
+    <title>CALENDAR</title>
+    <script src="converter.js"defer></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 10px 10px 10px 10px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: Transparent;
+            background-repeat: no-repeat;
+            border-radius: 12px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="converter">
+        <div class="contianer">
+            <div class="calendar">
+                <!-- Your existing calendar content goes here -->
+
+                <div class="calendar-header">
+                    <span class="month-picker" id="month-picker"> May </span>
+                    <div class="year-picker" id="year-picker">
+                        <span class="year-change" id="pre-year">
+                            <pre><</pre>
+                        </span>
+                        <span id="year">2020 </span>
+                        <span class="year-change" id="next-year">
+                            <pre>></pre>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="calendar-body">
+                    <div class="calendar-week-days">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="calendar-days">
+                    </div>
+                </div>
+
+                <div class="calendar-footer">
+                </div>
+
+                <div class="date-time-formate">
+                    <div class="day-text-formate">TODAY</div>
+                    <div class="date-time-value">
+                        <div class="time-formate">02:51:20</div>
+                        <div class="date-formate">23 - july - 2022</div>
+                    </div>
+                </div>
+                <div class="month-list"></div>
+            </div>
+        </div>
+    </form>
+
+    <div id="dataDisplay">
+        <!-- Add your manifest data here -->
+    </div>
+
+    <div class="panel" style="margin-left:900px">
+        <button class="button" id="googleMeetBtn"><img src="https://google.oit.ncsu.edu/wp-content/uploads/sites/6/2021/01/Google_Meet.max-2800x2800-1.png" class="image-spacing responsive-image" style="width:50px; height:50px;" class="image-spacing"></button>
+        <button class="button" id="collabBtn"><img class="responsive-image" src="collab.png" style="width:50px; height:50px;"></button>
+        <button class="button" id="chromecastBtn"><img class="responsive-image" src="chromecast.png" style="width:50px; height:50px;"></button>
+        <button class="button" id="chromeBrowsingBtn"><img class="responsive-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/1200px-Google_Chrome_icon_%28February_2022%29.svg.png" style="width:50px; height:50px;"></button>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+
+        // Add the logic to show the install button
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the default prompt
+            e.preventDefault();
+
+            // Display your custom install button
+            document.getElementById('installButton').style.display = 'block';
+
+            // Save the prompt event for later use
+            let deferredPrompt = e;
+
+            // Add a click event listener to your install button
+            document.getElementById('installButton').addEventListener('click', () => {
+                // Show the installation prompt
+                deferredPrompt.prompt();
+
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+
+                    // Reset the deferred prompt variable
+                    deferredPrompt = null;
+
+                    // Hide the install button
+                    document.getElementById('installButton').style.display = 'none';
+                });
+            });
+        });
+
+        // Add event listeners for button clicks
+        document.getElementById('googleMeetBtn').addEventListener('click', startGoogleMeet);
+        document.getElementById('collabBtn').addEventListener('click', startCollab);
+        document.getElementById('chromecastBtn').addEventListener('click', startChromecast);
+        document.getElementById('chromeBrowsingBtn').addEventListener('click', startChromeBrowsing);
+
+        // Function to start Google Meet
+        function startGoogleMeet() {
+            window.open('https://meet.google.com/', '_blank');
+        }
+
+        // Function to start Collab
+        function startCollab() {
+            window.open('https://collab.imago.us', '_blank');
+        }
+
+        // Function to start Chromecast
+        function startChromecast() {
+            window.open('https://www.google.com/chromecast/setup/', '_blank');
+        }
+
+        // Function to start Chrome Browsing
+        function startChromeBrowsing() {
+            window.open('https://www.google.com/', '_blank');
+        }
+    </script>
+</body>
+
+</html>
