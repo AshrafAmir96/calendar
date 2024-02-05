@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/calendar.png">
-    <link rel="manifest" href="/calendar/manifest.json">
-    <link rel="stylesheet" href="/calendar/converter.css">
+    <link rel="icon" type="image/png" href="calendar.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="converter.css">
     <title>CALENDAR</title>
-    <script src="/calendar/converter.js"defer></script>
+    <script src="converter.js"defer></script>
 
     <style>
         body {
@@ -83,16 +83,16 @@
         <!-- Add your manifest data here -->
     </div>
 
-    <div class="panel" style="margin-left:915px">
+    <div class="panel" style="margin-left:915px"  >
         <button class="button" id="googleMeetBtn"><img src="https://google.oit.ncsu.edu/wp-content/uploads/sites/6/2021/01/Google_Meet.max-2800x2800-1.png" class="image-spacing responsive-image" style="width:50px; height:50px;" class="image-spacing"></button>
         <button class="button" id="collabBtn"><img class="responsive-image" src="collab.png" style="width:50px; height:50px;"></button>
-        <button class="button" id="chromecastBtn"><img class="responsive-image" src="chromecast.png" style="width:50px; height:50px;"></button>
         <button class="button" id="chromeBrowsingBtn"><img class="responsive-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/1200px-Google_Chrome_icon_%28February_2022%29.svg.png" style="width:50px; height:50px;"></button>
+        <button class="button"><img class="responsive-image" src="buttonswallpaper.png" style="width:50px; height:50px;"></button>
     </div>
 
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/calendar/sw.js')
+            navigator.serviceWorker.register('/sw.js')
                 .then(registration => {
                     console.log('Service Worker registered with scope:', registration.scope);
                 })
@@ -137,8 +137,8 @@
         // Add event listeners for button clicks
         document.getElementById('googleMeetBtn').addEventListener('click', startGoogleMeet);
         document.getElementById('collabBtn').addEventListener('click', startCollab);
-        document.getElementById('chromecastBtn').addEventListener('click', startChromecast);
         document.getElementById('chromeBrowsingBtn').addEventListener('click', startChromeBrowsing);
+        
 
         // Function to start Google Meet
         function startGoogleMeet() {
@@ -151,14 +151,10 @@
         }
 
         // Function to start Chromecast
-        function startChromecast() {
-            window.open('https://www.google.com/chromecast/setup/', '_blank');
-        }
-
-        // Function to start Chrome Browsing
         function startChromeBrowsing() {
             window.open('https://www.google.com/', '_blank');
         }
+
     </script>
 </body>
 
