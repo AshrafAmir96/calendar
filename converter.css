@@ -601,7 +601,7 @@ transition: all .2s ease-in-out;
   .panel{
     max-width: 100%;
     position: fixed;
-    top: 680px;
+    top: 500px;
     right: 100px;
     margin-left: 0% !important;
   }
@@ -624,7 +624,7 @@ transition: all .2s ease-in-out;
   .panel{
     max-width: 100%;
     position: fixed;
-    top: 680px;
+    top: 500px;
     right: 100px;
     margin-left: 0% !important;
   }
@@ -647,7 +647,7 @@ transition: all .2s ease-in-out;
   .panel{
     max-width: 100%;
     position: fixed;
-    top: 680px;
+    top: 500px;
     right: 100px;
     margin-left: 0% !important;
   }
@@ -665,7 +665,7 @@ transition: all .2s ease-in-out;
   .panel{
     max-width: 100%;
     position: fixed;
-    top: 680px;
+    top: 400px;
     right: 100px;
   }
 
@@ -676,31 +676,5 @@ transition: all .2s ease-in-out;
   .button-container {
       margin-left: 5%;
       margin-right: 5%;
-  }
-}
-
-.notification-blocks {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.responsive-block {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 15px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-repeat: no-repeat;
-  border-radius: 20px;
-  border: 2px solid transparent;
-  overflow: hidden;
-}
-
-/* Media query for responsiveness */
-@media only screen and (max-width: 600px) {
-  .responsive-blocks {
-      padding: 8px 16px;
-      font-size: 12px;
   }
 }
