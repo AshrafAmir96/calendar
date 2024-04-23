@@ -148,27 +148,28 @@ generateCalendar(currentMonth.value, currentYear.value);
 
 const todayShowTime = document.querySelector('.time-formate');
 const todayShowDate = document.querySelector('.date-formate');
-function displayTime(){
-  var dateTime = new Date();
-  var hrs = dateTime.getHours();
-  var min = dateTime.getMinutes();
-  var sec = dateTime.getSeconds();
-  var session = document.getElementById('session');
-
-  if(hrs >= 12){
-      session.innerHTML = 'PM';
-  }else{
-      session.innerHTML = 'AM';
+  function updateTime() {
+    const dateTime = new Date();
+    let hrs = dateTime.getHours();
+    let min = dateTime.getMinutes();
+    const session = hrs < 12 ? 'AM' : 'PM';
+    
+    hrs = hrs % 12 || 12; // Convert to 12-hour format
+    
+    document.getElementById('hours').innerHTML = hrs < 10 ? '0' + hrs : hrs;
+    document.getElementById('minutes').innerHTML = min < 10 ? '0' + min : min;
+    document.getElementById('session').innerHTML = session;
   }
-
-  if(hrs > 12){
-      hrs = hrs - 12;
-  }
+  
+  // Call updateTime() initially to display the time immediately
+  updateTime();
+  
+  // Update the time every second
+  setInterval(updateTime, 1000);
 
   document.getElementById('hours').innerHTML = hrs;
   document.getElementById('minutes').innerHTML = min;
   document.getElementById('seconds').innerHTML = sec;
-}
 setInterval(displayTime, 10);
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -215,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
 }
+
 
 
   monthPicker.addEventListener('click', () => {
